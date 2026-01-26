@@ -1,0 +1,13 @@
+# 忽略编译产生的所有文件
+/target/
+
+# 忽略本地开发工具产生的配置
+.idea/
+*.iml
+.vscode/
+
+# 忽略游戏依赖库（别人需要自己去游戏目录复制）
+/lib/*.jar
+
+# 忽略 Maven 自动生成的临时文件
+dependency-reduced-pom.xml

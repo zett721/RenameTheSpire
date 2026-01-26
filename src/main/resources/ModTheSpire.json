@@ -1,0 +1,14 @@
+{
+    "modid": "RenameTheSpire",
+    "name": "RenameTheSpire",
+    "author_list": [
+        "zett"
+    ],
+    "description": "Rename any card using config file. Edit CardRenamesConfig.json to customize card names.",
+    "dependencies": [
+        "basemod"
+    ],
+    "version": "0.2.0-Config",
+    "sts_version": "01-25-2026",
+    "mts_version": "3.0.0"
+}
