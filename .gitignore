@@ -1,6 +1,10 @@
 # 忽略编译产生的所有文件
 /target/
-
+*.class
+*.log
+.idea/
+target/
+.DS_Store
 # 忽略本地开发工具产生的配置
 .idea/
 *.iml

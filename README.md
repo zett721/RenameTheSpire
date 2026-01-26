@@ -4,7 +4,7 @@
 
 **版本**: v0.5  
 **作者**: zett  
-**依赖**: BaseMod, ModTheSpire 3.0.0+
+**依赖**: BaseMod, ModTheSpire
 
 ---
 
@@ -21,7 +21,7 @@
 ## 🚀 快速开始
 
 ### 1. 安装
-
+(在创意工坊装了就不需要了)
 将 `RenameTheSpire.jar` 复制到游戏的 `mods` 文件夹：
 ```
 xxx\SteamLibrary\steamapps\common\SlayTheSpire\mods
@@ -154,7 +154,7 @@ Linux: ~/.config/ModTheSpire/RenameTheSpire/card_renames.json
 
 ## 🔧 开发信息
 
-- **GitHub**:
+- **GitHub**:[欢迎点我](https://github.com/zett721/RenameTheSpire)
 - **依赖**: BaseMod, ModTheSpire
 - **许可**: MIT
 ---
