@@ -4,11 +4,11 @@
     "author_list": [
         "zett"
     ],
-    "description": "Rename any card using config file. Edit CardRenamesConfig.json to customize card names.",
+    "description": "Rename any card (including other mod cards) using a config file. Edit card_renames.json to customize card names. Load this mod LAST for best compatibility.",
     "dependencies": [
         "basemod"
     ],
-    "version": "0.2.0-Config",
+    "version": "0.3.0",
     "sts_version": "01-25-2026",
     "mts_version": "3.0.0"
 }

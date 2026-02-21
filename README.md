@@ -1,8 +1,8 @@
 # RenameTheSpire - 卡牌重命名Mod
 
-一个功能强大的杀戮尖塔Mod，让你可以自定义任意卡牌的名称，支持批处理规则和智能标签管理。
+一个功能强大的杀戮尖塔Mod，让你可以自定义**任意卡牌**的名称，包括原版卡牌和其他Mod的卡牌，支持批处理规则和智能标签管理。
 
-**版本**: v0.5  
+**版本**: v0.3.0  
 **作者**: zett  
 **依赖**: BaseMod, ModTheSpire
 
@@ -10,11 +10,12 @@
 
 ## ✨ 主要功能
 
--  **单卡重命名** - 自定义任意卡牌名称
--  **双语索引** - 可以用中文名或英文ID作为索引
--  **批处理规则** - 统一给所有卡添加前缀/后缀
--  **智能标签管理** - 自动处理 STRIKE 标签，让完美打击等卡牌正确识别改名后的卡
--  **优先级控制** - 单卡配置优先于批处理规则
+- **单卡重命名** - 自定义任意卡牌名称
+- **支持 Mod 卡牌** - 不仅限于原版，其他 Mod 的卡牌同样可以改名
+- **双语索引** - 可以用中文名或英文ID作为索引
+- **批处理规则** - 统一给所有卡添加前缀/后缀
+- **智能标签管理** - 自动处理 STRIKE 标签，让完美打击等卡牌正确识别改名后的卡
+- **优先级控制** - 单卡配置优先于批处理规则
 
 ---
 
@@ -67,7 +68,8 @@ Linux: ~/.config/ModTheSpire/RenameTheSpire/card_renames.json
   "renames": {
     "Strike_G": "猎宝打击",
     "打击": "猎宝打击",
-    "防御": "鸡煲防御"
+    "防御": "鸡煲防御",
+    "SomeModCard": "自定义名称"
   }
 }
 ```
@@ -87,7 +89,7 @@ Linux: ~/.config/ModTheSpire/RenameTheSpire/card_renames.json
 格式：`"卡牌索引": "新名称"`
 
 **卡牌索引可以是**：
-- 英文ID（如 `"Strike_R"`）- 精确匹配
+- 英文ID（如 `"Strike_R"`）- 精确匹配，只改这一张
 - 中文名（如 `"打击"`）- 匹配所有同名卡
 
 ## 🎯 优先级规则
@@ -101,14 +103,27 @@ Linux: ~/.config/ModTheSpire/RenameTheSpire/card_renames.json
 
 ## 🔍 如何找卡牌ID
 
-### 方法1：从游戏的 cards.json 查找
+### 原版卡牌：从游戏 cards.json 查找
 
 1. 找到游戏安装目录
-2.  将`desktop-1.0.jar`后缀改为zip，解压
-3. 导航到 `localization/zhs/cards.json`（中文）或者 `localization/eng/cards.json`（英文）
-4. JSON的Key就是卡牌ID
+2. 将 `desktop-1.0.jar` 后缀改为 `.zip`，解压
+3. 导航到 `localization/zhs/cards.json`（中文）或 `localization/eng/cards.json`（英文）
+4. JSON 的 Key 就是卡牌ID
 
-### 方法2：直接用中文名
+### 原版卡牌：直接用中文名
+
+中文名也可以作为索引，方便快捷。
+
+### 其他 Mod 的卡牌：看文件名
+
+大多数 Mod 的卡牌 ID 与其 `.class` 文件名相同。  
+如果你能找到 Mod 的源码或解压其 `.jar` 文件，在 `card/` 文件夹下找到对应的 `.class` 文件，**文件名（去掉 `.class`）基本上就是 cardID**。
+
+例如：
+```
+card/colorless/ShadedStrike.class  →  cardID 为 "ShadedStrike"
+card/common/EnergyStrike.class     →  cardID 为 "EnergyStrike"
+```
 
 ---
 
@@ -118,12 +133,16 @@ Linux: ~/.config/ModTheSpire/RenameTheSpire/card_renames.json
 
 配置文件只在游戏启动时加载。
 
-### 2. JSON格式规则
+### 2. 建议将本 Mod 放在加载列表最后
+
+为了确保改名效果不被其他 Mod 覆盖，在 ModTheSpire 的 Mod 列表中，请将 **RenameTheSpire 拖到最后面**加载。
+
+### 3. JSON格式规则
 
 - 每项后面要有逗号，**最后一项不要逗号**
 - 必须用双引号 `"`，不能用单引号 `'`
 
-### 3. 中文名索引的特性
+### 4. 中文名索引的特性
 
 用中文名索引会匹配所有同名卡：
 - `"打击": "猎宝打击"` → 所有职业的"打击"都会改
@@ -139,7 +158,10 @@ Linux: ~/.config/ModTheSpire/RenameTheSpire/card_renames.json
 
 ### Q: 修改后没生效？
 
-**A**: 需要重启游戏。每次启动时才会重新加载配置。
+**A**: 
+1. 需要重启游戏。
+2. 确认 RenameTheSpire 在加载列表中排在**最后**。
+3. 检查 cardID 是否填写正确（区分大小写）。
 
 ### Q: JSON格式错误/卡在Mod加载界面怎么办？
 
